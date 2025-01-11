@@ -4,6 +4,7 @@ import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
 import Layout from "./Layout.vue";
+import Confitti from "./components/Confitti.vue";
 
 export default {
   extends: DefaultTheme,
@@ -14,5 +15,6 @@ export default {
   },
   enhanceApp({ app, router, siteData }) {
     // ...
+    app.component("Confitti", Confitti)
   }
 } satisfies Theme

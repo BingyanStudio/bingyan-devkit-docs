@@ -29,3 +29,4 @@ features:
     details: 总体积 < 1MB，无任何依赖项，开箱即用。支持使用 git 或 Unity Package Manager 引入项目。
 ---
 
+<Confitti />
