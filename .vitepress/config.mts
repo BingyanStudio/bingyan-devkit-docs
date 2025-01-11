@@ -1,28 +1,61 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, UserConfig } from 'vitepress'
+import { withSidebar } from "vitepress-sidebar";
+import { VitePressSidebarOptions } from 'vitepress-sidebar/types';
 
-// https://vitepress.dev/reference/site-config
-export default defineConfig({
+const vitepressOptions: UserConfig = {
   title: "Bingyan DevKit",
   description: "Unity DevKit powered by Bingyan Studio",
+  appearance: "dark",
+
   themeConfig: {
+
+    logo: '/logo.webp',
+
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: '主页', link: '/' },
+      { text: '文档', link: '/getting-started' }
     ],
 
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
+    outline: {
+      level: [2, 3],
+      label: "本页内容"
+    },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
-})
+      { icon: 'github', link: 'https://github.com/BingyanStudio/BingyanDevKit' }
+    ],
+
+    search: {
+      provider: "local",
+    },
+
+    lastUpdated: {
+      text: "上次更新",
+      formatOptions: {
+        dateStyle: "full",
+        timeStyle: "medium",
+      },
+    },
+  },
+
+  lastUpdated: true,
+}
+
+const vitePressSidebarOptions: VitePressSidebarOptions = {
+  // VitePress Sidebar's options here...
+  collapsed: false,
+  capitalizeFirst: true,
+  useTitleFromFileHeading: true,
+  useFolderTitleFromIndexFile: true,
+
+  sortMenusByFrontmatterOrder: true,
+  sortMenusOrderByDescending: true,
+
+  sortFolderTo: "bottom"
+};
+
+// https://vitepress.dev/reference/site-config
+export default defineConfig(
+  withSidebar(vitepressOptions, vitePressSidebarOptions)
+)
