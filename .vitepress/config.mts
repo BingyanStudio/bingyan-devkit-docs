@@ -7,14 +7,16 @@ const vitepressOptions: UserConfig = {
   description: "Unity DevKit powered by Bingyan Studio",
   appearance: "dark",
 
+  
+
   themeConfig: {
 
-    logo: '/logo.webp',
+    logo: '/logo.avif',
 
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
-      { text: '文档', link: '/getting-started' }
+      { text: '文档', link: '/introduction' }
     ],
 
     outline: {
@@ -40,6 +42,12 @@ const vitepressOptions: UserConfig = {
   },
 
   lastUpdated: true,
+  markdown: {
+    image: {
+      // 默认禁用图片懒加载
+      lazyLoading: true
+    }
+  }
 }
 
 const vitePressSidebarOptions: VitePressSidebarOptions = {
@@ -52,7 +60,7 @@ const vitePressSidebarOptions: VitePressSidebarOptions = {
   sortMenusByFrontmatterOrder: true,
   sortMenusOrderByDescending: true,
 
-  sortFolderTo: "bottom"
+  sortFolderTo: "bottom",
 };
 
 // https://vitepress.dev/reference/site-config

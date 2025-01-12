@@ -45,10 +45,10 @@
 
 :root {
 
-  --vp-c-orange-1: #f0890a;
-  --vp-c-orange-2: #e58225;
-  --vp-c-orange-3: #ffaa00;
-  --vp-c-orange-soft: rgba(234, 159, 8, 0.14);
+  --vp-c-orange-1: #ff8c00;
+  --vp-c-orange-2: #c56409;
+  --vp-c-orange-3: #ffa600;
+  --vp-c-orange-soft: rgba(229, 160, 22, 0.418);
 
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
@@ -125,8 +125,8 @@
 :root {
   --vp-custom-block-tip-border: transparent;
   --vp-custom-block-tip-text: var(--vp-c-text-1);
-  --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
-  --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
+  --vp-custom-block-tip-bg: var(--vp-c-indigo-soft);
+  --vp-custom-block-tip-code-bg: var(--vp-c-indigo-soft);
 }
 
 /**
@@ -157,4 +157,44 @@
 
 .medium-zoom-image {
   border-radius: 0.4rem;
+}
+
+
+/* 提示框 */
+.custom-block.tip {
+  border-color: var(--vp-c-indigo-2);
+}
+
+/* 警告框 */
+.custom-block.warning {
+  /* border-color: #d97706; */
+  border-color: var(--vp-c-yellow-2);
+}
+
+/* 危险框 */
+.custom-block.danger {
+  /* border-color: #f43f5e; */
+  border-color: var(--vp-c-red-2);
+}
+
+/* 隐藏垂直滚动条 */
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+/* 隐藏水平滚动条 */
+body::-webkit-scrollbar-horizontal {
+  height: 0.5em;
+}
+
+body::-webkit-scrollbar-thumb-horizontal {
+  background: transparent;
 }
