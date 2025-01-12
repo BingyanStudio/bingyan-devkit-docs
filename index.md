@@ -7,12 +7,12 @@ hero:
   text: "Unity 开发工具箱"
   tagline: 一箩筐好用的 Unity 工具！
   image:
-    src: /logo.webp
+    src: /logo.avif
     alt: VitePress
   actions:
     - theme: brand
       text: 开始使用
-      link: /getting-started/install
+      link: /introduction
     - theme: alt
       text: 关于冰岩
       link: https://www.bingyan.net/
