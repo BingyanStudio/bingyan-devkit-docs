@@ -7,7 +7,6 @@ const vitepressOptions: UserConfig = withMermaid({
   title: "Bingyan DevKit",
   description: "Unity DevKit powered by Bingyan Studio",
   appearance: "dark",
-  base: "/bingyan-devkit-docs/",
 
   themeConfig: {
 

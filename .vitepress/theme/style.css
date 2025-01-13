@@ -160,6 +160,10 @@
 }
 
 
+/**
+ * containers
+ * -------------------------------------------------------------------------- */
+
 /* 提示框 */
 .custom-block.tip {
   border-color: var(--vp-c-indigo-2);
@@ -176,6 +180,10 @@
   /* border-color: #f43f5e; */
   border-color: var(--vp-c-red-2);
 }
+
+/**
+ * scroll bars
+ * -------------------------------------------------------------------------- */
 
 /* 隐藏垂直滚动条 */
 body::-webkit-scrollbar {
@@ -199,9 +207,17 @@ body::-webkit-scrollbar-thumb-horizontal {
   background: transparent;
 }
 
+/**
+ * mermaid
+ * -------------------------------------------------------------------------- */
+
 .dark .edgeLabel p {
   background-color: #1b1b1f !important;
 }
+
+/**
+ * layout
+ * -------------------------------------------------------------------------- */
 
 h3 {
   margin-top: 42px !important;
