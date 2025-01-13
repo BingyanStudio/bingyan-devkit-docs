@@ -1,10 +1,5 @@
 # `Archive` - 存档系统
 
-::: warning 🚧 施工中
-本文档仍在施工！  
-如需使用，可以查阅 https://bingyan.feishu.cn/wiki/PbtIwWDUqiyejjkHhoScgzzMnve
-:::
-
 `Archive` 提供一个便捷的、基于字典的存档系统，使用相当简便的代码即可实现读写操作。
 
 ## 结构概览
@@ -54,10 +49,8 @@ var health = Archive.Get("health", 100);
 Archive.Save(0);
 
 ```
-
----
-
-### 内容管理
+  
+### 键值管理
 
 `Archive` 提供了一些 API，用于管理当前缓存中的内容：
 - `Archive.Has(key)` 判断缓存中是否存在指定的键。
@@ -88,7 +81,7 @@ for(int i = 0; i < 5; i++)
 要存储这些数据类型，请参考 [`DataStore`](./1-archive#datastore)
 :::
 
----
+ 
 
 ### 文件管理
 
@@ -107,7 +100,7 @@ for(int i = 0; i < 5; i++)
 `Archive.Clear(index)` 会清空第 `index` 号存档文件的内容，但不会修改**缓存**。
 :::
 
----
+ 
 
 ### 事件
 
@@ -116,7 +109,7 @@ for(int i = 0; i < 5; i++)
 - `Archive.Saved` 在缓存写入存档文件后触发。
 - `Archive.Loaded` 在存档文件**读入缓存**时触发。可以在这一时机进行初始化等操作。
 
----
+ 
 
 ### `DataStore`
 
@@ -138,7 +131,7 @@ for(int i = 0; i < 5; i++)
 > **当前楼层 `string`** -> **目标楼层ID `string`** -> **楼层按钮状态 `T`**
 :::
 
----
+<br/>
 
 以下示例展示了如何使用 `DataStoreDict` 存储玩家的背包：
 ```C#
@@ -151,7 +144,6 @@ private static DataStoreDict<int> inventory = new("inventory");
 Archive.LoadToGame(0);
 
 // DataStore 在数据结构外封装了一层，因此需要如此调取实际字典
-// 注意：此特性可能在后续被修改 // [!code highlight]
 foreach(var kv in inventory.Dict) {
     Debug.Log($"物品 {kv.Key} 有 {kv.Value} 个");
 }
@@ -160,3 +152,75 @@ foreach(var kv in inventory.Dict) {
 // DataStore 会在存档保存时自动存入最新的值
 Archive.Save(0);
 ```
+
+<br/>
+
+你也可以拓展 `DataStore` ，从而实现你所需要的特殊数据结构的存储。  
+以下是 `DataStoreList<T>` 的关键源码，作为参考：
+```C#
+public class DataStoreList<T> : DataStore
+{
+    // DataStore 内部封装的列表，是实际存储数据的结构
+    protected List<T> list;
+
+    // 构造函数，不需要做任何事情
+    public DataStoreList(string key) : base(key) { }
+
+    // 重载的 Save() 函数，需要在此处将 list 存入存档
+    // DataStoreList 将列表再次序列化后，作为字符串存入 Archive 缓冲中
+    protected override void Save() { base.Save(); Archive.Set(key, JsonMapper.ToJson(list)); }
+
+    // 重载的 Load() 函数，需要在此处从 Archive 读取并还原 list
+    // 注意：base.Load() 必须在数据提取完毕后再调用！
+    protected override void Load()
+    {
+        list = JsonMapper.ToObject<List<T>>(Archive.Get(key, "")) ?? new List<T>();
+        base.Load();  // [!code highlight]
+    }
+
+    // 打印当前存储的数据，用于 Debug
+    public override void PrintContent()
+    {
+        StringBuilder sb = new($"列表 {key}: 长度 {list.Count}\n");
+        list.ForEach(i => sb.Append($"{i}\n"));
+        Debug.Log(sb);
+    }
+}
+```
+
+ 
+
+### 自定义解析器
+
+有时候，你可能需要改变默认的 JSON 解析行为，使用你自己的数据解析逻辑。  
+`Archive` 提供了 `Archive.RegisterParser<T>(prefix, importer, exporter)` 来实现这一功能。  
+
+以下是解析 `Vector2` 的自定义解析器示例。这个解析器已经默认注册到 `Archive` 中，因此你不需要将这段代码重复一遍。
+```C#
+// "v2" 作为标记，标明这是一个 Vector2 类型的值
+// 存储在 JSON 中的所有 Vector2 将以 "$v2:" 开头的字符串形式存在
+RegisterParser<Vector2>("v2",   
+                  s =>
+                  {   // 解析逻辑，在 JSON 解析过程中检测到 "v2" 前缀时触发
+                      // 传入的 s 是读取到的字符串，已经将前缀去除了
+                      var parts = s.Split(',');
+                      return new Vector2(float.Parse(parts[0]), float.Parse(parts[1]));
+                  },
+                  obj =>
+                  {   // 序列化逻辑，在 JSON 序列化过程中触发
+                      // 传入的 obj 是需要序列化的 Vector2 对象
+                      var vec = (Vector2)obj;
+
+                      // 返回的字符串将会再次被添加 "v2" 前缀存入 JSON 中
+                      // 在这个例子里，Vector2 将以 $v2:x,y 的形式存储
+                      return $"{vec.x},{vec.y}";
+                  }
+);
+```
+
+ 
+
+### Debug
+
+你可以随时使用 `Archive.PrintContent()` 查看当前存档**缓存**中的所有值。  
+同时，`DataStore.PrintContent()` 可以查看指定 `DataStore` 中存储的数据。
