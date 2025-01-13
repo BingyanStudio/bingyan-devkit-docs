@@ -23,7 +23,7 @@ features:
     details: 消除大量 Boilerplate，基于团队合作经验提供协作交流工具，提高开发效率。
   - icon: ⚒️
     title: 丰富
-    details: 补充了 1mol Unity 未直接提供的工具，增加了许多常用功能，降低开发难度。
+    details: 补充了 1 mol Unity 未直接提供的工具，增加了许多常用功能，降低开发难度。
   - icon: 🪶
     title: 轻量
     details: 总体积 < 1MB，无任何依赖项，开箱即用。支持使用 git 或 Unity Package Manager 引入项目。

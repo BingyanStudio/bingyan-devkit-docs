@@ -5,7 +5,7 @@
 ## 依赖关系
 `Bingyan DevKit` 不依赖任何第三方库，需要与 `Unity3D` 项目一起使用即可。  
 
-::: tip 💎 注意
+::: tip
 `Bingyan DevKit` 内置了 [`LitJson`](https://github.com/LitJSON/litjson) 库作为 JSON 序列化工具。  
 如果你的项目已经使用其他方式引入 `LitJson`，则可以考虑将其移除。
 :::
