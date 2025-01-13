@@ -198,3 +198,7 @@ body::-webkit-scrollbar-horizontal {
 body::-webkit-scrollbar-thumb-horizontal {
   background: transparent;
 }
+
+.dark .edgeLabel p{
+  background-color: #1b1b1f !important;
+}

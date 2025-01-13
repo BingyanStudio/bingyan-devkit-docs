@@ -1,13 +1,12 @@
 import { defineConfig, UserConfig } from 'vitepress'
 import { withSidebar } from "vitepress-sidebar";
 import { VitePressSidebarOptions } from 'vitepress-sidebar/types';
+import { withMermaid } from "vitepress-plugin-mermaid";
 
-const vitepressOptions: UserConfig = {
+const vitepressOptions: UserConfig = withMermaid({
   title: "Bingyan DevKit",
   description: "Unity DevKit powered by Bingyan Studio",
   appearance: "dark",
-
-  
 
   themeConfig: {
 
@@ -42,13 +41,35 @@ const vitepressOptions: UserConfig = {
   },
 
   lastUpdated: true,
+  
   markdown: {
     image: {
       // 默认禁用图片懒加载
       lazyLoading: true
+    },
+
+    container: {
+      tipLabel: ':gem: 提示',
+      warningLabel: ':warning: 注意',
+      dangerLabel: '危险',
+      infoLabel: '信息',
+      detailsLabel: '详细信息'
     }
-  }
-}
+  },
+
+  mermaid: {
+    theme: "base",
+    themeVariables: {
+      primaryColor: "#ffa60044",
+      primaryBorderColor: "#ff8c00",
+      secondaryColor: "#fff",
+    }
+  },
+
+  mermaidPlugin: {
+    class: "mermaid", // set additional css classes for parent container 
+  },
+})
 
 const vitePressSidebarOptions: VitePressSidebarOptions = {
   // VitePress Sidebar's options here...
@@ -65,5 +86,5 @@ const vitePressSidebarOptions: VitePressSidebarOptions = {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig(
-  withSidebar(vitepressOptions, vitePressSidebarOptions)
+  withSidebar(vitepressOptions, vitePressSidebarOptions),
 )
