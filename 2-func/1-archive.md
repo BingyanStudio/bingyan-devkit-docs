@@ -1,6 +1,25 @@
 # `Archive` - 存档系统
 
-`Archive` 提供一个便捷的、基于字典的存档系统，使用相当简便的代码即可实现读写操作。
+`Archive` 提供一个便捷的、基于字典的存档系统，使用相当简便的代码即可实现读写操作。  
+
+
+## 最简应用
+
+```C#
+// 加载第 0 号存档
+Archive.LoadToGame(0);
+
+// 将数值存入存档
+Archive.Set("health", 30); 
+
+// 从存档读取数值，如果不存在，则使用第二个参数作为默认值
+Archive.Get("mana", 100); 
+
+// 保存第 0 号存档
+Archive.Save(0);
+
+```
+
 
 ## 结构概览
 
@@ -18,6 +37,7 @@ flowchart TD
 ```
 
 其中，核心结构 `Archive` 内部封装了一个 `Dictionary<string, object>` 作为缓存。
+
 
 ## 使用方法
 
