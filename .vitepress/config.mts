@@ -73,7 +73,7 @@ const vitepressOptions: UserConfig = withMermaid({
 
 const vitePressSidebarOptions: VitePressSidebarOptions = {
   // VitePress Sidebar's options here...
-  collapsed: true,
+  collapsed: true ,
   capitalizeFirst: true,
   useTitleFromFileHeading: true,
   useFolderTitleFromIndexFile: true,
