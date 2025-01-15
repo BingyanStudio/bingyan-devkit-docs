@@ -8,7 +8,9 @@
 `FSM` 提供一套简单快速的状态机系统，可以更方便地实现主角控制、敌人 AI、游戏状态管理等功能，减少重复劳动。
 
 
-## 最简示例
+## 快速上手
+
+以下示例演示了一个双状态的状态机，实现主角的走路和跑步两种状态。
 
 ```C#
 public class MyComponent : FSM 
@@ -17,6 +19,7 @@ public class MyComponent : FSM
     protected override void DefineStates()
     {
         // 需使用 AddState 方法添加
+        // 忘了也没关系，日志会报警告的
         AddState(new WalkState(this));
         AddState(new RunState(this));
     }
