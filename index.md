@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 开始使用
-      link: /introduction
+      link: /1-introduction
     - theme: alt
       text: 关于冰岩
       link: https://www.bingyan.net/

@@ -15,7 +15,7 @@ const vitepressOptions: UserConfig = withMermaid({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '主页', link: '/' },
-      { text: '文档', link: '/introduction' }
+      { text: '文档', link: '/1-introduction' }
     ],
 
     outline: {
