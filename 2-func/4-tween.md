@@ -11,7 +11,7 @@
 
 ::: tip
 `Tween` 适用于通用、规模小-中等的补间用例。  
-如果你需要功能更强大的补间，不妨试试 [`DoTween`](https://github.com/Demigiant/dotween)！
+如果你需要功能更强大的补间，不妨试试 [`DOTween`](https://github.com/Demigiant/dotween)！
 :::
 
 
