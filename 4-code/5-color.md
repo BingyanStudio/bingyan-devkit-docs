@@ -6,10 +6,9 @@
 
 ```C#
 // 将 #rrggbbaa, #rrggbb, #rgb, #rgba 格式的字符串转为 Color
-ColorUtils.FromHex(string hex);
+var color = ColorUtils.FromHex("#FFFFFF");
 
 // 获得一个当前颜色仅修改一个分量后的新颜色值
-var color = Color.white;
 var red = color.SetR(1);
 var green = color.SetG(1);
 var blue = color.SetB(1);
