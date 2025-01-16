@@ -2,7 +2,7 @@
 
 `ColorUtils` 提供了一些与颜色有关的工具方法。
 
-## 快速上手
+## 快速使用
 
 ```C#
 // 将 #rrggbbaa, #rrggbb, #rgb, #rgba 格式的字符串转为 Color
