@@ -9,8 +9,8 @@
 var color = ColorUtils.FromHex("#FFFFFF");
 
 // 获得一个当前颜色仅修改一个分量后的新颜色值
-var red = color.SetR(1);
-var green = color.SetG(1);
-var blue = color.SetB(1);
-var transparent = color.SetA(0);
+var red = color.WithR(1);
+var green = color.WithG(1);
+var blue = color.WithB(1);
+var transparent = color.WithA(0);
 ```
